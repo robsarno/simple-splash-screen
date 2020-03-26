@@ -48,41 +48,30 @@
               <div id="app-cover">
                 <div id="player">
                     <div id="player-track">
-                        <div id="album-name"></div>
-                        <div id="track-name"></div>
-                        <div id="track-time">
-                            <div id="current-time"></div>
-                            <div id="track-length"></div>
-                        </div>
-                        <div id="s-area">
-                            <div id="ins-time"></div>
-                            <div id="s-hover"></div>
-                            <div id="seek-bar"></div>
-                        </div>
+                        <div id="status">NON CONNESSO</div>
+                        <div id="track-name">Parrocchia San Giacomo Maggiore Apostolo Sedrina</div>
                     </div>
                     <div id="player-content">
                         <div id="album-art">
-                            <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg" class="active" id="_1">
-                            <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_2.jpg" id="_2">
-                            <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_3.jpg" id="_3">
-                            <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_4.jpg" id="_4">
-                            <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_5.jpg" id="_5">
+                            <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg" class="active">
                             <div id="buffer-box">Buffering ...</div>
                         </div>
                         <div id="player-controls">
                             <div class="control">
-                                <div class="button" id="play-previous">
-                                    <i class="fas fa-backward"></i>
+                                <div class="button">
+                                  <div id="mute-button"><i class="fas fa-volume-up" title="Disattiva audio"></i></div>
+                                  <div id="unmute-button" style="display: none;"><i class="fas fa-volume-mute" title="Attiva audio"></i></div>
                                 </div>
                             </div>
                             <div class="control">
                                 <div class="button" id="play-pause-button">
-                                    <i class="fas fa-play"></i>
+                                  <div id="play-button"><i class="fas fa-play" title="Avvia riproduzione"></i></div>
+                                  <div id="pause-button" style="display: none;"><i class="fas fa-pause" title="Ferma riproduzione"></i></div>
                                 </div>
                             </div>
                             <div class="control">
-                                <div class="button" id="play-next">
-                                    <i class="fas fa-forward"></i>
+                                <div class="button">
+                                  <div id="sync-button"><i class="fas fa-step-forward" title="Sicronizza riproduzione con la radio"></i></div>
                                 </div>
                             </div>
                         </div>

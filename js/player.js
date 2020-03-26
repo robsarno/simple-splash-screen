@@ -1,33 +1,56 @@
 $(function()
 {
-    var playerTrack = $("#player-track"), bgArtwork = $('#bg-artwork'), bgArtworkUrl, albumName = $('#album-name'), trackName = $('#track-name'), albumArt = $('#album-art'), sArea = $('#s-area'), seekBar = $('#seek-bar'), trackTime = $('#track-time'), insTime = $('#ins-time'), sHover = $('#s-hover'), playPauseButton = $("#play-pause-button"),  i = playPauseButton.find('i'), tProgress = $('#current-time'), tTime = $('#track-length'), seekT, seekLoc, seekBarPos, cM, ctMinutes, ctSeconds, curMinutes, curSeconds, durMinutes, durSeconds, playProgress, bTime, nTime = 0, buffInterval = null, tFlag = false, albums = ['Dawn','Me & You','Electro Boy','Home','Proxy (Original Mix)'], trackNames = ['Skylike - Dawn','Alex Skrindo - Me & You','Kaaze - Electro Boy','Jordan Schor - Home','Martin Garrix - Proxy'], albumArtworks = ['_1','_2','_3','_4','_5'], trackUrl = ['http://freeuk7.listen2myradio.com/records/radiouser3127401/record.mp3', 'https://freeuk7.listen2myradio.com/live.mp3?typeportmount=s1_24362_stream'], playPreviousTrackButton = $('#play-previous'), playNextTrackButton = $('#play-next'), currIndex = -1;
+    var playerTrack = $("#player-track"), status = $("#status"),
+    albumArt = $('#album-art'), /*seekBar = $('#seek-bar'),*/
+    trackTime = $('#track-time'), insTime = $('#ins-time'), sHover = $('#s-hover'), playPauseButton = $("#play-pause-button"), 
+    play = $('#play-button'), pause = $('#pause-button'),
+    mutebutton = $('#mute-button'), unmutebutton = $('#unmute-button'), syncbutton = $('#sync-button'), tProgress = $('#current-time'), tTime = $('#track-length'),
+    seekT, seekLoc, seekBarPos, cM, ctMinutes, ctSeconds, curMinutes, curSeconds, durMinutes, durSeconds, playProgress,
+    bTime, nTime = 0, buffInterval = null
+    trackUrl = ['https://freeuk7.listen2myradio.com/live.mp3?typeportmount=s1_24362_stream','https://freeuk7.listen2myradio.com/records/radiouser3127401/record.mp3', 'http://82.145.59.200:24362'],
+    currIndex = -1,
+    first = true, playPromise = true
+    stream = $('#track-name')
 
     function playPause()
     {
         setTimeout(function()
         {
-            if(audio.paused)
-            {
-                playerTrack.addClass('active');
-                albumArt.addClass('active');
-                checkBuffering();
-                i.attr('class','fas fa-pause');
-                audio.play();
+            if(audio.paused){
+                audio_play()
             }
-            else
-            {
-                playerTrack.removeClass('active');
-                albumArt.removeClass('active');
-                clearInterval(buffInterval);
-                albumArt.removeClass('buffering');
-                i.attr('class','fas fa-play');
-                audio.pause();
+            else{
+                audio_pause()
             }
         },300);
     }
 
+    function audio_play(){
+        if(first){
+            setTimeout(audio.load(),500)
+            first = false
+        }
+        playerTrack.addClass('active');
+        albumArt.addClass('active');
+        //checkBuffering();
+        playPromise = audio.play();
+
+        play.hide();
+        pause.show()
+    }
+
+    function audio_pause(){
+        playerTrack.removeClass('active');
+        albumArt.removeClass('active');
+        //clearInterval(buffInterval);
+        //albumArt.removeClass('buffering');
+        audio.pause();
+
+        play.show();
+        pause.hide();
+    }
         
-    function showHover(event)
+    /*function showHover(event)
     {
         seekBarPos = sArea.offset(); 
         seekT = event.clientX - seekBarPos.left;
@@ -58,22 +81,22 @@ $(function()
             
         insTime.css({'left':seekT,'margin-left':'-21px'}).fadeIn(0);
         
-    }
+    }*/
 
-    function hideHover()
+    /*function hideHover()
     {
         sHover.width(0);
         insTime.text('00:00').css({'left':'0px','margin-left':'0px'}).fadeOut(0);       
-    }
+    }*/
     
-    function playFromClickedPos()
+    /*function playFromClickedPos()
     {
         audio.currentTime = seekLoc;
         seekBar.width(seekT);
         hideHover();
-    }
+    }*/
 
-    function updateCurrTime()
+    /*function updateCurrTime()
     {
         nTime = new Date();
         nTime = nTime.getTime();
@@ -116,21 +139,9 @@ $(function()
             trackTime.removeClass('active');
         else
             trackTime.addClass('active');
-
-        
-        seekBar.width(playProgress+'%');
-        
-        if( playProgress == 100 )
-        {
-            i.attr('class','fa fa-play');
-            seekBar.width(0);
-            tProgress.text('00:00');
-            albumArt.removeClass('buffering').removeClass('active');
-            clearInterval(buffInterval);
-        }
-    }
+    }*/
     
-    function checkBuffering()
+    /*function checkBuffering()
     {
         clearInterval(buffInterval);
         buffInterval = setInterval(function()
@@ -144,9 +155,9 @@ $(function()
             bTime = bTime.getTime();
 
         },100);
-    }
+    }*/
 
-    function selectTrack(flag)
+    /*function selectTrack(flag)
     {
         if( flag == 0 || flag == 1 )
             ++currIndex;
@@ -155,22 +166,14 @@ $(function()
 
         if( (currIndex > -1) && (currIndex < albumArtworks.length) )
         {
-            if( flag == 0 )
-                i.attr('class','fa fa-play');
-            else
-            {
+            if( flag != 0 ){
                 albumArt.removeClass('buffering');
-                i.attr('class','fa fa-pause');
             }
 
             seekBar.width(0);
             trackTime.removeClass('active');
             tProgress.text('00:00');
             tTime.text('00:00');
-
-            currAlbum = albums[currIndex];
-            currTrackName = trackNames[currIndex];
-            currArtwork = albumArtworks[currIndex];
 
             audio.src = trackUrl[currIndex];
             
@@ -187,15 +190,6 @@ $(function()
                 clearInterval(buffInterval);
                 checkBuffering();
             }
-
-            albumName.text(currAlbum);
-            trackName.text(currTrackName);
-            albumArt.find('img.active').removeClass('active');
-            $('#'+currArtwork).addClass('active');
-            
-            bgArtworkUrl = $('#'+currArtwork).attr('src');
-
-            bgArtwork.css({'background-image':'url('+bgArtworkUrl+')'});
         }
         else
         {
@@ -204,29 +198,89 @@ $(function()
             else
                 ++currIndex;
         }
+    }*/
+
+    function update(){
+        console.log("ready "+audio.readyState);
+        //console.log(audio.currentTime);
+        console.log("network "+audio.networkState);
+
+        if (playPromise !== undefined) {
+            playPromise.then(function() {
+                // Automatic playback started!
+            }).catch(function(error) {
+                alert("La radio non è attiva. Verrà riprodotta l'ultima registrazione effettuata.")
+                audio_pause();
+
+                //metto registrazione
+                audio.src = trackUrl[1];
+                stream.html("ULTIMA REGISTRAZIONE EFFETTUATA");
+                audio_play();
+            });
+        }
+
+        if(audio.networkState==2){
+            status.html("CONNESSO A:")
+        }
+        else {
+            status.html("CONNESSIONE...")
+        }
+
+    }
+
+    function sync(){
+        audio.pause();
+        setTimeout(audio.load(),300)
+        playerTrack.addClass('active');
+        albumArt.addClass('active');
+        playPromise = audio.play();
+
+        play.hide();
+        pause.show()
+    }
+
+    function mutefunc(){
+        if(audio.muted){
+            audio.muted = false
+        
+            unmutebutton.hide();
+            mutebutton.show();
+        } else {
+            audio.muted = true
+        
+            mutebutton.hide();
+            unmutebutton.show();
+        }
     }
 
     function initPlayer()
     {   
-        audio = new Audio();
+        audio = new Audio(trackUrl[0]);
 
-        selectTrack(0);
+        //selectTrack(0);
         
         audio.loop = false;
         
         playPauseButton.on('click',playPause);
+        mutebutton.on('click',mutefunc);
+        unmutebutton.on('click',mutefunc);
+        syncbutton.on('click',sync);
         
-        sArea.mousemove(function(event){ showHover(event); });
+        //sArea.mousemove(function(event){ showHover(event); });
         
-        sArea.mouseout(hideHover);
+        //sArea.mouseout(hideHover);
         
-        sArea.on('click',playFromClickedPos);
+        //sArea.on('click',playFromClickedPos);
         
-        $(audio).on('timeupdate',updateCurrTime);
+        $(audio).on('timeupdate',update);
 
-        playPreviousTrackButton.on('click',function(){ selectTrack(-1);} );
-        playNextTrackButton.on('click',function(){ selectTrack(1);});
+        //playPreviousTrackButton.on('click',function(){ selectTrack(-1);} );
+        //playNextTrackButton.on('click',function(){ selectTrack(1);});
     }
-    
+
     initPlayer();
+    
+    console.log("ready "+audio.readyState);
+    //console.log(audio.currentTime);
+    console.log("network "+audio.networkState);
 });
