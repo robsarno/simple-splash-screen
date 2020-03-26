@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <title>Parrocchia di Sedrina</title>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-6 left">
+          <div class="effetto">
+            <img src="img/logo.png" alt="Logo Parrocchia" class="logo-effetto">
+          </div>
+          <img src="img/logo.png" alt="Logo Parrocchia" class="logo">
+          <div class="row titolo">
+            <div class="col-xl-12">
+              <h1 style="font-weight: 500;">Parrocchia<br>San Giacomo Maggiore Apostolo</h1>
+              <h5>Sedrina</h5>
+              <p class="sub">Stiamo lavorando per la creazione di un sito web per poter gestire al meglio la comunicazione con tutti gli abitanti di Sedrina.
+                <br>Pubblicazioni, articoli, foto, notizie e molto altro, tutto accessibile e ben organizzato in un unico posto.
+              </p>
+              <p class="light">Il traguardo è ancora lontano, ma non manca molto.<br>Nel frattempo questi due link potrebbero esserti utili:</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-6 right">
+          <div class="row">
+            <div class="col-12">
+              <a name="" id="" class="btn link btn-block" href="#" role="button">Radio parrocchiale</a>
+            </div>
+            <div class="col-12">
+              <a name="" id="" class="btn link btn-block" href="#" role="button">Video diretta</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const left = document.querySelector('.left');
+      const titolo = document.querySelector('.titolo');
+      const logoeffetto = document.querySelector('.logo-effetto');
+
+      left.addEventListener('mousemove', (event) => {
+        let move = (event.clientX * 0.05) +4;
+        let move2 = (event.clientX * 0.02);
+
+        logoeffetto.style.transform = `translateX(${move}px)`;
+        titolo.style.transform = `translateX(-${move2}px)`;
+      })
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

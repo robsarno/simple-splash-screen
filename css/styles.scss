@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+body {
+  //margin: 0 auto;
+  font-family: 'Montserrat', sans-serif !important;
+  //background-color:#eeeeee !important;
+  //background: linear-gradient(90deg,#ec008c 0%,#78c2f0 100%) !important;
+  font-size:18px !important;
+  height: 100vh;
+  background-color:#eeeeee;
+}
+
+.container-fluid{
+  //margin: 0 auto;
+  text-align: center !important;
+  z-index: -1;
+
+  p {
+    line-height: 1.7rem;
+  }
+
+  .sub{
+    margin: 2.5rem 0 2.5rem 0 !important;
+  }
+
+  .left{
+    /*
+    background: linear-gradient(120deg,#ec008c 0%,#78c2f0 100%);
+    -webkit-animation: gradient 15s ease infinite;
+    animation: gradient 15s ease infinite;
+    */
+    background: linear-gradient(-45deg, #ee7752, #ec008c, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    -webkit-animation: gradient 15s ease infinite;
+    animation: gradient 15s ease infinite;
+
+
+    color: white !important;
+    padding: 1rem;
+    @media (min-width:1024px) {
+      text-align: left;
+      height: 100vh;
+      display: grid;
+    }
+
+    .logo{
+      width: 180px;
+      margin-top: 2rem;
+      @media (min-width:1024px) {
+        margin-top: 1rem;
+        width: 130px;
+        margin-left: 2rem;
+      }
+    }
+
+    .titolo{
+      @media (min-width:1024px) {
+        padding: 0 4.5rem;
+      }
+    }
+  }
+  
+  .right{
+    z-index: 2;
+
+    @media (min-width:1024px) {
+      align-self: center;
+      padding: 0 4rem;
+    }
+
+    .link{
+      color: #727272 !important;
+      border: 3px solid #727272 !important;
+      padding: 1.2em ;
+      font-size: 1.8em !important;
+      margin: 1rem 0 1rem 0;
+
+      @media (min-width:1024px) {
+        margin: 3rem 0;
+      }
+    }
+  }
+}
+
+.light{
+  margin-bottom: 1rem;
+  color: rgba($color: #ffffff, $alpha: 0.7)
+}
+
+.links{
+  @media (min-width:1024px) {
+    margin-top: 3rem;
+  }
+}
+
+.titolo{
+  margin-top: 2rem;
+  @media (min-width:1024px) {
+    margin-top: 0;
+  }
+}
+
+.effetto{
+  //clip-path: inset(0 45% 0 0);
+  @media (max-width:1023px) {
+    display: none;
+  }
+  position: absolute;
+  bottom: 0%;
+  //top: 20%;
+  left: 24%;
+  z-index: 1;
+  //width: 100%;
+  //background-color: bisque;
+}
+
+.logo-effetto{
+  opacity: 16%;
+  width: 680px;
+  //position: absolute;
+}
+
+@media only screen and (min-width: 1024px){
+  body{
+    font-size: 20px !important;
+  }
+  
+  .logo{
+    
+  }
+}
+
+@-webkit-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
