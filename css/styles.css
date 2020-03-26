@@ -3,7 +3,6 @@ body {
   font-family: 'Montserrat', sans-serif !important;
   font-size: 18px !important;
   height: 100vh;
-  background-color: #eeeeee;
 }
 
 .container-fluid {
@@ -63,6 +62,7 @@ body {
 
 .container-fluid .right {
   z-index: 2;
+  height: 100vh;
 }
 
 @media (min-width: 1024px) {
@@ -75,17 +75,31 @@ body {
 }
 
 .container-fluid .right .link {
-  color: #727272 !important;
-  border: 3px solid #727272 !important;
-  padding: 1.2em;
+  color: white !important;
+  padding: 1.7rem;
   font-size: 1.8em !important;
   margin: 1rem 0 1rem 0;
+  width: 50%;
+  background: linear-gradient(-45deg, #ec008c, #23a6d5);
+  background-size: 200% 200%;
+  background-position: 100% 0;
+  /*
+      border: solid 4px transparent;
+      border-image: linear-gradient(-45deg, #ec008c, #23a6d5);
+      border-image-slice: 1;
+      */
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 @media (min-width: 1024px) {
   .container-fluid .right .link {
     margin: 3rem 0;
   }
+}
+
+.container-fluid .right a.link:hover {
+  background-position: 0 0;
 }
 
 .light {
@@ -155,5 +169,12 @@ body {
   100% {
     background-position: 0% 50%;
   }
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 /*# sourceMappingURL=styles.css.map */

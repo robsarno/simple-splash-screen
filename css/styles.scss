@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
+@mixin font-gradient($from, $to, $dir) {
+  background: -webkit-linear-gradient($dir, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 body {
   //margin: 0 auto;
   font-family: 'Montserrat', sans-serif !important;
@@ -7,7 +13,7 @@ body {
   //background: linear-gradient(90deg,#ec008c 0%,#78c2f0 100%) !important;
   font-size:18px !important;
   height: 100vh;
-  background-color:#eeeeee;
+  //background-color:#a5a5a5 !important;
 }
 
 .container-fluid{
@@ -61,23 +67,44 @@ body {
   }
   
   .right{
+    //background-color:#a5a5a5;
     z-index: 2;
+    height: 100vh;
 
     @media (min-width:1024px) {
       align-self: center;
       padding: 0 4rem;
     }
 
+
     .link{
-      color: #727272 !important;
-      border: 3px solid #727272 !important;
-      padding: 1.2em ;
+      color: white !important;
+      padding: 1.7rem ;
       font-size: 1.8em !important;
       margin: 1rem 0 1rem 0;
+      width: 50%;
+      
+      background: linear-gradient(-45deg, #ec008c, #23a6d5);
+      background-size: 200% 200%;
+      background-position: 100% 0;
+      
+
+      /*
+      border: solid 4px transparent;
+      border-image: linear-gradient(-45deg, #ec008c, #23a6d5);
+      border-image-slice: 1;
+      */
+      transition: all 0.5s ease;
+
+      //@include font-gradient(#ec008c, #23a6d5, right);
 
       @media (min-width:1024px) {
         margin: 3rem 0;
       }
+    }
+
+    a.link:hover{
+      background-position: 0 0;
     }
   }
 }
@@ -152,4 +179,12 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+
+canvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
