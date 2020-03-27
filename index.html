@@ -11,6 +11,7 @@
     
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="css/loader.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -19,6 +20,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+    <div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
     <div id="fb-root"></div>
     <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
     <div class="container-fluid">
@@ -46,14 +50,14 @@
               
               
             </!--div-->
-            <div class="col-xs-12 fb-video-cont">
+            <div class="col-xl-12 fb-video-cont">
               <h4 style="margin-bottom: 1rem;"><i class="fas fa-broadcast-tower" style="color:firebrick !important; font-size: 18px !important;"></i> Segui la diretta video Facebook <i class="fas fa-broadcast-tower" style="color:firebrick !important; font-size: 18px !important;"></i></h4>
               <div class="fb-video" data-href="https://www.facebook.com/parrocchiasangiacomosedrina/videos/153969485794306/" data-width="auto"></div>
               <!--iframe-- src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F681908565970072%2F&width=0" width="500" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></!--iframe-->
               </div>
           </div>
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xl-12">
               <div id="app-cover">
                 <div id="player">
                     <div id="player-track" class="active">
@@ -117,6 +121,10 @@
   
     <script src="js/player.js"></script>
     <script>
+      $(window).on("load",function(){
+        $(".loader-wrapper").fadeOut("slow");
+      });
+
       const left = document.querySelector('.left');
       const titolo = document.querySelector('.titolo');
       const logoeffetto = document.querySelector('.logo-effetto');

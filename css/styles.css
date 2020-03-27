@@ -193,7 +193,6 @@ canvas {
 .fb-video-cont {
   top: 4em;
   position: relative;
-  width: 100%;
 }
 
 @media (max-width: 460px) {

@@ -5,14 +5,16 @@
 
 #app-cover
 {
-    position: absolute;
+    /*position: absolute;
     bottom: 5vh;
     right: 0;
     left: 0;
+    margin: auto;*/
     height: 100px;
-    margin: auto;
+    margin-top: 10rem;
 
     @media (min-width:576px) {
+        display: inline-block;
         width: 430px;
     }
     @media (max-width: 460px){
