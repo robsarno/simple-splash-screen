@@ -4,7 +4,7 @@
 
 #app-cover {
   position: absolute;
-  bottom: 5%;
+  bottom: 5vh;
   right: 0;
   left: 0;
   height: 100px;
@@ -14,6 +14,12 @@
 @media (min-width: 576px) {
   #app-cover {
     width: 430px;
+  }
+}
+
+@media (max-width: 460px) {
+  #app-cover {
+    height: 70px;
   }
 }
 
@@ -28,7 +34,7 @@
   top: 0;
   right: 15px;
   left: 15px;
-  padding: 13px 22px 10px 184px;
+  padding: 13px 22px 10px 140px;
   background-color: #fff7f7;
   border-radius: 15px 15px 0 0;
   -webkit-transition: 0.5s ease top;
@@ -37,16 +43,16 @@
 }
 
 #player-track.active {
-  top: -95px;
+  top: -75px;
 }
 
-#status {
+#connection {
   color: #54576f;
   font-size: 17px;
   font-weight: bold;
 }
 
-#track-name {
+#radio {
   color: #acaebd;
   font-size: 13px;
   margin: 2px 0 13px 0;
@@ -131,14 +137,20 @@
   position: relative;
   height: 100%;
   background-color: #fff;
-  -webkit-box-shadow: 0 30px 80px #656565;
-          box-shadow: 0 30px 80px #656565;
   border-radius: 15px;
   z-index: 2;
-  border: solid 4px transparent;
+  border-style: solid;
+  border-width: 4px;
   -o-border-image: linear-gradient(-45deg, #ec008c, #23a6d5);
      border-image: linear-gradient(-45deg, #ec008c, #23a6d5);
   border-image-slice: 1;
+}
+
+@media (min-width: 1024px) {
+  #player-content {
+    -webkit-box-shadow: 0 30px 80px #656565;
+            box-shadow: 0 30px 80px #656565;
+  }
 }
 
 #album-art {
@@ -155,6 +167,13 @@
           box-shadow: 0 0 0 10px #fff;
   border-radius: 50%;
   overflow: hidden;
+}
+
+@media (max-width: 460px) {
+  #album-art {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 #album-art.active {
@@ -271,7 +290,7 @@
 
 .control {
   width: 33.333%;
-  float: left;
+  float: right;
   margin-top: 6px;
 }
 
@@ -280,6 +299,12 @@
   background-color: #fff;
   border-radius: 6px;
   cursor: pointer;
+}
+
+@media (max-width: 460px) {
+  .button {
+    padding: 10px;
+  }
 }
 
 .noclick {

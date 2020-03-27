@@ -76,6 +76,14 @@ body {
       padding: 0 4rem;
     }
 
+    @media (max-width: 620px){
+      height: 80vh;
+    }
+
+    @media (max-width: 460px){
+      height: 70vh;
+    }
+
 
     .link{
       color: white !important;
@@ -181,10 +189,18 @@ body {
 	}
 }
 
-
 canvas{
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.fb-video-cont{
+  top: 4em;
+  position: relative;
+  width: 100%;
+  @media (max-width: 460px){
+    top: 3em;
+  }
 }

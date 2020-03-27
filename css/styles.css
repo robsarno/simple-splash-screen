@@ -74,6 +74,18 @@ body {
   }
 }
 
+@media (max-width: 620px) {
+  .container-fluid .right {
+    height: 80vh;
+  }
+}
+
+@media (max-width: 460px) {
+  .container-fluid .right {
+    height: 70vh;
+  }
+}
+
 .container-fluid .right .link {
   color: white !important;
   padding: 1.7rem;
@@ -176,5 +188,17 @@ canvas {
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.fb-video-cont {
+  top: 4em;
+  position: relative;
+  width: 100%;
+}
+
+@media (max-width: 460px) {
+  .fb-video-cont {
+    top: 3em;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

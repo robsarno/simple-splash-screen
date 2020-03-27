@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Sito web della parrocchia San Giacomo Maggiore Apostolo di Sedrina">
     
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/player.css">
@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <div></div>
+    <div id="fb-root"></div>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
     <div class="container-fluid">
       <div class="row">
         <div class="col-xl-6 left">
@@ -34,27 +35,34 @@
               <p class="sub">Stiamo lavorando per la creazione di un sito web per poter gestire al meglio la comunicazione con tutti gli abitanti di Sedrina.
                 <br>Pubblicazioni, articoli, foto, notizie e molto altro, tutto accessibile e ben organizzato in un unico posto.
               </p>
-              <p class="light">Il traguardo è ancora lontano, ma non manca molto.<br>Nel frattempo questi due link potrebbero esserti utili:</p>
+              <p class="light">Il traguardo è ancora lontano, ma non manca molto.<br>Su questa pagina puoi ascoltare la radio parrocchiale (in fondo se usi uno smartphone) e seguire la diretta video Facebook (se attiva).</p>
             </div>
           </div>
         </div>
 
         <div class="col-xl-6 right"  id="particles-js">
           <div class="row">
-            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F660952098073818%2F&width=0" width="0" height="0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+            <!--div-- class="col-xs-12" style="width:100%">
+              
+              
+            </!--div-->
+            <div class="col-xs-12 fb-video-cont">
+              <h4 style="margin-bottom: 1rem;"><i class="fas fa-broadcast-tower" style="color:firebrick !important; font-size: 18px !important;"></i> Segui la diretta video Facebook <i class="fas fa-broadcast-tower" style="color:firebrick !important; font-size: 18px !important;"></i></h4>
+              <div class="fb-video" data-href="https://www.facebook.com/parrocchiasangiacomosedrina/videos/153969485794306/" data-width="auto"></div>
+              <!--iframe-- src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F681908565970072%2F&width=0" width="500" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></!--iframe-->
+              </div>
           </div>
           <div class="row">
             <div class="col-xs-12">
               <div id="app-cover">
                 <div id="player">
-                    <div id="player-track">
-                        <div id="status">NON CONNESSO</div>
-                        <div id="track-name">Parrocchia San Giacomo Maggiore Apostolo Sedrina</div>
+                    <div id="player-track" class="active">
+                        <div id="connection">---</div>
+                        <div id="radio">---</div>
                     </div>
                     <div id="player-content">
                         <div id="album-art">
                             <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg" class="active">
-                            <div id="buffer-box">Buffering ...</div>
                         </div>
                         <div id="player-controls">
                             <div class="control">
@@ -69,11 +77,11 @@
                                   <div id="pause-button" style="display: none;"><i class="fas fa-pause" title="Ferma riproduzione"></i></div>
                                 </div>
                             </div>
-                            <div class="control">
+                            <!--div-- class="control">
                                 <div class="button">
                                   <div id="sync-button"><i class="fas fa-step-forward" title="Sicronizza riproduzione con la radio"></i></div>
                                 </div>
-                            </div>
+                            </!--div-->
                         </div>
                     </div>
                 </div>
@@ -99,7 +107,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <!--script-- src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></!--script-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
