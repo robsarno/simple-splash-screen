@@ -106,34 +106,4 @@ $(function()
                 
         $(audio).on('timeupdate',update);
     }
-    
-    $.ajax({
-        type: 'GET',
-        //headers: {"X-Requested-With": "XMLHttpRequest"},
-        //crossDomain: true,
-        url:'https://stream-radio-check-dot-first-project-272018.appspot.com/',
-        //xhrFields: {withCredentials: true },
-        success: function(output, status, xhr){
-            //console.log(xhr.getResponseHeader("Content-Length"))
-            console.log("response "+output)
-            if(output=="play mp3"){ //stream is not online
-                connection.html("ULTIMA REGISTRAZIONE")
-                connectionText = "ULTIMA REGISTRAZIONE"
-                radio.html("RADIO NON ATTIVA")
-                initPlayer(trackUrl[1]); //play record
-            } else if(output=="stream online") {
-                connection.html("CONNESSO")
-                connectionText = "CONNESSO"
-                radio.html("RADIO ATTIVA")
-                initPlayer(trackUrl[0]); //play stream
-            } else {
-                connection.html("NON CONNESSO")
-                connectionText = "NON CONNESSO"
-                radio.html("RADIO NON ATTIVA")
-            }
-        },
-        error: function (request, textStatus, errorThrown) {
-            console.log(errorThrown)
-        }
-    });
 });
