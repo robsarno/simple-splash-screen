@@ -3,6 +3,7 @@ body {
   font-family: 'Montserrat', sans-serif !important;
   font-size: 18px !important;
   height: 100vh;
+  background-color: #242F3F !important;
 }
 
 .container-fluid {
@@ -35,7 +36,6 @@ body {
 @media (min-width: 1024px) {
   .container-fluid .left {
     text-align: left;
-    height: 100vh;
     display: -ms-grid;
     display: grid;
   }
