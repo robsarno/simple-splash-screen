@@ -9,20 +9,25 @@
     left: 0;
     margin: auto;*/
   height: 100px;
-  margin-top: 16rem;
+  margin-top: 20rem;
+  bottom: 0;
+  /*@media (max-width: 460px) {
+        margin-top: 16rem;
+        height: 70px;
+    }*/
+}
+
+@media (max-width: 959px) {
+  #app-cover {
+    margin-top: 14rem;
+    height: 70px;
+  }
 }
 
 @media (min-width: 576px) {
   #app-cover {
     display: inline-block;
     width: 430px;
-  }
-}
-
-@media (max-width: 460px) {
-  #app-cover {
-    margin-top: 14rem;
-    height: 70px;
   }
 }
 
@@ -43,6 +48,20 @@
   -webkit-transition: 0.5s ease top;
   transition: 0.5s ease top;
   z-index: 1;
+}
+
+@media (max-width: 390px) {
+  #player-track {
+    padding: 13px 12px 10px 130px;
+  }
+  #player-track #connection {
+    font-size: 0.9rem;
+    line-height: 1rem;
+  }
+  #player-track #radio {
+    font-size: 0.7rem;
+    line-height: 1rem;
+  }
 }
 
 #player-track.active {
@@ -147,13 +166,9 @@
   -o-border-image: linear-gradient(-45deg, #ec008c, #23a6d5);
      border-image: linear-gradient(-45deg, #ec008c, #23a6d5);
   border-image-slice: 1;
-}
-
-@media (min-width: 1024px) {
-  #player-content {
-    -webkit-box-shadow: 0 30px 80px #656565;
-            box-shadow: 0 30px 80px #656565;
-  }
+  /*@media (min-width:1024px){
+        box-shadow: 0 30px 80px #656565;
+    }*/
 }
 
 #album-art {
@@ -173,6 +188,13 @@
           box-shadow: 0 0 0 10px #fff;
   border-radius: 50%;
   overflow: hidden;
+}
+
+@media (max-width: 959px) {
+  #album-art {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 @media (max-width: 460px) {
@@ -319,7 +341,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 460px) {
+@media (max-width: 959px) {
   .button {
     padding: 10px;
   }

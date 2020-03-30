@@ -61,6 +61,7 @@ body {
 }
 
 .container-fluid .right {
+  background-color: #242F3F !important;
   z-index: 2;
   height: 100vh;
 }
@@ -71,18 +72,6 @@ body {
         -ms-grid-row-align: center;
         align-self: center;
     padding: 0 4rem;
-  }
-}
-
-@media (max-width: 620px) {
-  .container-fluid .right {
-    height: 80vh;
-  }
-}
-
-@media (max-width: 460px) {
-  .container-fluid .right {
-    height: 70vh;
   }
 }
 
@@ -199,5 +188,9 @@ canvas {
   .fb-video-cont {
     top: 3em;
   }
+}
+
+h4, h6 {
+  color: white;
 }
 /*# sourceMappingURL=styles.css.map */

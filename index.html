@@ -9,21 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Parrocchia San Giacomo Maggiore Apostolo di Sedrina (BG)">
     <link rel="icon" href="img/favicon.ico"/>
-    
+     
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/player.css">
     <link rel="stylesheet" href="css/loader.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
+    <!-- Bootstrap / FontAwesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <!--div-- class="loader-wrapper">
-      <span class="loader"><span class="loader-inner"></span></span>
-    </!--div-->
     <div class="loader-wrapper">
       <div class="loader-inner">
         <div class="loader-line-wrap">
@@ -67,14 +65,10 @@
 
         <div class="col-xl-6 right"  id="particles-js">
           <div class="row">
-            <!--div-- class="col-xs-12" style="width:100%">
-              
-              
-            </!--div-->
             <div class="col-xl-12 fb-video-cont">
-              <h4 style="margin-bottom: 1rem;" id="live-text">Segui la diretta video Facebook</h4>
+              <h4 style="margin-bottom: 1rem;" id="live-text">-</h4>
               <iframe id="fb-video"
-                src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F864174127434165%2F&show_text=0&width=560"
+                src=""
                 style="border:none;overflow:hidden;width:100%" scrolling="no" frameborder="0"
                 allowTransparency="true" allowFullScreen="true" title="Diretta Facebook Parrochia Sedrina">
               </iframe>
@@ -91,7 +85,7 @@
                     </div>
                     <div id="player-content">
                         <div id="album-art">
-                            <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg" alt="album cover" class="active">
+                            <img src="img/album-art.jpg" alt="album cover" class="active">
                         </div>
                         <div id="player-controls">
                             <div class="control">
@@ -149,17 +143,19 @@
         type: 'GET',
         //headers: {"X-Requested-With": "XMLHttpRequest"},
         //crossDomain: true,
-        url:'https://stream-radio-check-dot-first-project-272018.appspot.com/',
+        url:'https://radio-video-check-dot-first-project-272018.appspot.com/',
         //xhrFields: {withCredentials: true },
         success: function(output, status, xhr){
             //console.log(xhr.getResponseHeader("Content-Length"))
-            console.log("response "+output)
-            if(output=="play mp3"){ //stream is not online
+            //console.log("response "+output)
+            var data = output.split(";")
+            //radio setup
+            if(data[0]=="play mp3"){ //stream is not online
                 connection.html("ULTIMA REGISTRAZIONE")
                 connectionText = "ULTIMA REGISTRAZIONE"
                 radio.html("RADIO NON ATTIVA")
                 initPlayer(trackUrl[1]); //play record
-            } else if(output=="stream online") {
+            } else if(data[0]=="stream online") {
                 connection.html("CONNESSO")
                 connectionText = "CONNESSO"
                 radio.html("RADIO ATTIVA")
@@ -169,23 +165,15 @@
                 connectionText = "NON CONNESSO"
                 radio.html("RADIO NON ATTIVA")
             }
-        },
-        error: function (request, textStatus, errorThrown) {
-            console.log(errorThrown)
-        }
-      });
 
-      $.ajax({
-        type: 'GET',
-        url:'https://stream-radio-check-dot-first-project-272018.appspot.com/',
-        success: function(output, status, xhr){
-            console.log("video-link "+output)
-            console.log(output.split(" "))
-            //$("#fb-video").attr("src",output)
+            //video setup
+            $("#fb-video").attr("src", "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F"+data[1]+"%2F&show_text=0&width=560")
+            //console.log("https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F"+data[1]+"%2F&show_text=1&width=560")
+            $("#live-text").html(data[2])
+            $("#next-live").html("Prossima diretta: "+data[3])
         },
         error: function (request, textStatus, errorThrown) {
             console.log(errorThrown)
-            //$("#fb-video").attr("src","https://www.facebook.com/parrocchiasangiacomosedrina/videos/153969485794306/")
         }
       });
 

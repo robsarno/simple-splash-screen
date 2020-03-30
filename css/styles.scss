@@ -9,11 +9,10 @@
 body {
   //margin: 0 auto;
   font-family: 'Montserrat', sans-serif !important;
-  //background-color:#eeeeee !important;
   //background: linear-gradient(90deg,#ec008c 0%,#78c2f0 100%) !important;
   font-size:18px !important;
   height: 100vh;
-  //background-color:#a5a5a5 !important;
+  //background-color:#242F3F;
 }
 
 .container-fluid{
@@ -67,7 +66,7 @@ body {
   }
   
   .right{
-    //background-color:#a5a5a5;
+    background-color:#242F3F !important;
     z-index: 2;
     height: 100vh;
 
@@ -77,11 +76,11 @@ body {
     }
 
     @media (max-width: 620px){
-      height: 80vh;
+      //height: 80vh;
     }
 
     @media (max-width: 460px){
-      height: 70vh;
+      //height: 70vh;
     }
 
 
@@ -159,10 +158,6 @@ body {
   body{
     font-size: 20px !important;
   }
-  
-  .logo{
-    
-  }
 }
 
 @-webkit-keyframes gradient {
@@ -202,4 +197,8 @@ canvas{
   @media (max-width: 460px){
     top: 3em;
   }
+}
+
+h4, h6{
+  color: white;
 }
