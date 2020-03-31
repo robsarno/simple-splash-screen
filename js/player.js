@@ -106,4 +106,42 @@ $(function()
                 
         $(audio).on('timeupdate',update);
     }
+
+    $.ajax({
+        type: 'GET',
+        //headers: {"X-Requested-With": "XMLHttpRequest"},
+        //crossDomain: true,
+        url: 'https://radio-video-check-dot-first-project-272018.appspot.com/',
+        //xhrFields: {withCredentials: true },
+        success: function (output, status, xhr) {
+            //console.log(xhr.getResponseHeader("Content-Length"))
+            //console.log("response "+output)
+            var data = output.split(";")
+            //radio setup
+            if (data[0] == "play mp3") { //stream is not online
+                connection.html("ULTIMA REGISTRAZIONE")
+                connectionText = "ULTIMA REGISTRAZIONE"
+                radio.html("RADIO NON ATTIVA")
+                initPlayer(trackUrl[1]); //play record
+            } else if (data[0] == "stream online") {
+                connection.html("CONNESSO")
+                connectionText = "CONNESSO"
+                radio.html("RADIO ATTIVA")
+                initPlayer(trackUrl[0]); //play stream
+            } else {
+                connection.html("NON CONNESSO")
+                connectionText = "NON CONNESSO"
+                radio.html("RADIO NON ATTIVA")
+            }
+
+            //video setup
+            $("#fb-video").attr("src", "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F" + data[1] + "%2F&show_text=0&width=560")
+            //console.log("https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F"+data[1]+"%2F&show_text=1&width=560")
+            $("#live-text").html(data[2])
+            $("#next-live").html("Prossima diretta: " + data[3])
+        },
+        error: function (request, textStatus, errorThrown) {
+            console.log(errorThrown)
+        }
+    });
 });
