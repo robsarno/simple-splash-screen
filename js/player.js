@@ -111,7 +111,7 @@ $(function()
         type: 'GET',
         //headers: {"X-Requested-With": "XMLHttpRequest"},
         //crossDomain: true,
-        url: 'https://radio-video-check-dot-first-project-272018.appspot.com/',
+        url: 'https://radio-video-check.herokuapp.com/',
         //xhrFields: {withCredentials: true },
         success: function (output, status, xhr) {
             //console.log(xhr.getResponseHeader("Content-Length"))
