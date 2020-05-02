@@ -9,9 +9,9 @@ $(function()
     connection = $('#connection')
     radio = $('#radio')
     connectionText = "",
-    trackUrl = ['https://freeuk7.listen2myradio.com/live.mp3?typeportmount=s1_24362_stream',
+    /*trackUrl = ['https://freeuk7.listen2myradio.com/live.mp3?typeportmount=s1_24362_stream',
     'https://freeuk7.listen2myradio.com/records/radiouser3127401/record.mp3', 
-    'http://82.145.59.200:24362']
+    'http://82.145.59.200:24362']*/
 
     function playPause()
     {
@@ -122,12 +122,12 @@ $(function()
                 connection.html("ULTIMA REGISTRAZIONE")
                 connectionText = "ULTIMA REGISTRAZIONE"
                 radio.html("RADIO NON ATTIVA")
-                initPlayer(trackUrl[1]); //play record
+                initPlayer(data[1]); //play record
             } else if (data[0] == "stream online") {
                 connection.html("CONNESSO")
                 connectionText = "CONNESSO"
                 radio.html("RADIO ATTIVA")
-                initPlayer(trackUrl[0]); //play stream
+                initPlayer(data[1]); //play stream
             } else {
                 connection.html("NON CONNESSO")
                 connectionText = "NON CONNESSO"
@@ -135,10 +135,10 @@ $(function()
             }
 
             //video setup
-            $("#fb-video").attr("src", "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F" + data[1] + "%2F&show_text=0&width=560")
+            $("#fb-video").attr("src", "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F" + data[2] + "%2F&show_text=0&width=560")
             //console.log("https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F"+data[1]+"%2F&show_text=1&width=560")
-            $("#live-text").html(data[2])
-            $("#next-live").html("Prossima diretta: " + data[3])
+            $("#live-text").html(data[3])
+            $("#next-live").html("Prossima diretta: " + data[4])
         },
         error: function (request, textStatus, errorThrown) {
             console.log(errorThrown)
