@@ -132,10 +132,10 @@ $(function () {
             }
 
             //video setup
-            $("#fb-video").attr("src", "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F" + data[2] + "%2F&show_text=0&width=560")
+            //$("#fb-video").attr("src", "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F" + data[2] + "%2F&show_text=0&width=560")
             //console.log("https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fparrocchiasangiacomosedrina%2Fvideos%2F"+data[1]+"%2F&show_text=1&width=560")
-            $("#live-text").html(data[3])
-            $("#next-live").html("Prossima diretta: " + data[4])
+            //$("#live-text").html(data[3])
+            //$("#next-live").html("Prossima diretta: " + data[4])
         },
         error: function (request, textStatus, errorThrown) {
             console.log(errorThrown)
