@@ -1,34 +1,33 @@
-$(function()
-{
+$(function () {
     var playerTrack = $("#player-track"),
-    albumArt = $('#album-art'),
-    playPauseButton = $("#play-pause-button"), 
-    play = $('#play-button'), pause = $('#pause-button'),
-    mutebutton = $('#mute-button'), unmutebutton = $('#unmute-button'),
-    first = true, playPromise = true
+        albumArt = $('#album-art'),
+        playPauseButton = $("#play-pause-button"),
+        play = $('#play-button'),
+        pause = $('#pause-button'),
+        mutebutton = $('#mute-button'),
+        unmutebutton = $('#unmute-button'),
+        first = true,
+        playPromise = true
     connection = $('#connection')
     radio = $('#radio')
-    connectionText = "",
+    connectionText = ""
     /*trackUrl = ['https://freeuk7.listen2myradio.com/live.mp3?typeportmount=s1_24362_stream',
     'https://freeuk7.listen2myradio.com/records/radiouser3127401/record.mp3', 
-    'http://82.145.59.200:24362']*/
+    'http://82.145.59.200:24362'];*/
 
-    function playPause()
-    {
-        setTimeout(function()
-        {
-            if(audio.paused){
+    function playPause() {
+        setTimeout(function () {
+            if (audio.paused) {
                 audio_play()
-            }
-            else{
+            } else {
                 audio_pause()
             }
-        },300);
+        }, 300);
     }
 
-    function audio_play(){
-        if(first){
-            setTimeout(audio.load(),500)
+    function audio_play() {
+        if (first) {
+            setTimeout(audio.load(), 500)
             first = false
         }
         playerTrack.addClass('active');
@@ -40,7 +39,7 @@ $(function()
         pause.show()
     }
 
-    function audio_pause(){
+    function audio_pause() {
         playerTrack.removeClass('active');
         albumArt.removeClass('active');
         audio.pause();
@@ -49,7 +48,7 @@ $(function()
         pause.hide();
     }
 
-    function update(){
+    function update() {
         console.log("ready " + audio.readyState);
         console.log("network " + audio.networkState);
 
@@ -61,50 +60,48 @@ $(function()
             });
         }*/
 
-        if(audio.networkState>0){
+        if (audio.networkState > 0) {
             connection.html(connectionText)
-        }
-        else {
+        } else {
             connection.html("CONNESSIONE...")
         }
 
     }
 
-    function sync(){
+    function sync() {
         audio_pause()
-        setTimeout(audio.load(),300)
+        setTimeout(audio.load(), 300)
         audio_play()
 
         play.hide();
         pause.show()
     }
 
-    function mutefunc(){
-        if(audio.muted){
+    function mutefunc() {
+        if (audio.muted) {
             audio.muted = false
-        
+
             unmutebutton.hide();
             mutebutton.show();
         } else {
             audio.muted = true
-        
+
             mutebutton.hide();
             unmutebutton.show();
         }
     }
 
-    function initPlayer(urlT)
-    {   
+    function initPlayer(urlT) {
         audio = new Audio(urlT);
-        
+
         audio.loop = false;
-        
-        playPauseButton.on('click',playPause);
-        mutebutton.on('click',mutefunc);
-        unmutebutton.on('click',mutefunc);
+
+        playPauseButton.on('click', playPause);
+        mutebutton.on('click', mutefunc);
+        unmutebutton.on('click', mutefunc);
         //syncbutton.on('click',sync)
-                
-        $(audio).on('timeupdate',update);
+
+        $(audio).on('timeupdate', update);
     }
 
     $.ajax({
@@ -116,7 +113,7 @@ $(function()
         success: function (output, status, xhr) {
             //console.log(xhr.getResponseHeader("Content-Length"))
             //console.log("response "+output)
-            var data = output.split(";")
+            var data = output.split("|")
             //radio setup
             if (data[0] == "play mp3") { //stream is not online
                 connection.html("ULTIMA REGISTRAZIONE")
